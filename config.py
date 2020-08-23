@@ -1,5 +1,5 @@
-API_KEY = 'PK7KUWFPPH3SXSSFD64B'  # put your api Key id
-SECRET_KEY = 'oCfXyaMG/libzUhDpTgiH9QBNREama/OjzvSqZtt'
+API_KEY = ''  # put your api Key id
+SECRET_KEY = ''  # put your secret Key id
 HEADERS = {
     'APCA-API-KEY-ID': API_KEY,
     'APCA-API-SECRET-KEY': SECRET_KEY
