@@ -6,8 +6,8 @@ class AlpacaBuySell:
 
     def __init__(self, symbol=None, qty=10, order_type='market', time_in_force='gtc'):
         self.base_url = config.BASE_URL
-        self.api_key_id = ''  # put your api key of the account you want to trade on
-        self.api_secret = ''  # put your secret key of the account you want
+        self.api_key_id = 'PKFK5ZG1GL1U1Y66UHU1'  # put your api key of the account you want to trade on
+        self.api_secret = 'lG1oalOi1nEUFkTQNtU3QRkBm1bnDvABlRYhYZnm'  # put your secret key of the account you want
         # to trade on
         self.symbol = symbol  # Ticker symbol of the stock
         self.qty = qty  # number of shares
@@ -264,7 +264,42 @@ class AlpacaBuySell:
                     print("I am here")
                     AlpacaBuySell(pos[idx].symbol, qty=pos[idx].qty).market_sell()
 
+    def cancel_orders_and_liquidate_the_given_stock(self):
+        api = tradeapi.REST(
+            base_url=self.base_url,
+            key_id=self.api_key_id,
+            secret_key=self.api_secret
+        )
 
+        order_list_for_the_give_stock = list()
+
+        list_orders_ = api.list_orders()
+        for i in list_orders_:
+            if i.symbol == self.symbol:
+                order_list_for_the_give_stock.append(i.id)
+                # print(i.id[-1])
+
+        print(order_list_for_the_give_stock)
+        api.cancel_order(order_list_for_the_give_stock[-1])
+        # AlpacaBuySell(self.symbol).liqidate_position_of_a_stock()
+
+        pos = api.list_positions()
+        for idx, p in enumerate(pos):
+            if pos[idx].symbol == self.symbol:
+                print("Element Exists")
+                print(pos[idx].symbol)
+                print(pos[idx].side)
+                # print(pos[idx].qty)
+                if pos[idx].side == "long":
+                    print("I am here")
+                    AlpacaBuySell(pos[idx].symbol, qty=self.qty).market_sell()
+
+
+# api = AlpacaBuySell().api_call()
+# list_orders = api.list_orders()
+# print(list_orders)
+# AlpacaBuySell("OSTK").cancel_orders_and_liquidate_the_given_stock()
+# print(list_orders[1].id[-1])
 # api = tradeapi.REST(
 #     base_url=config.Liquidate_all_the_positions_url,
 #     key_id=config.API_KEY,
@@ -298,6 +333,17 @@ import requests
 # #
 # #
 # api = AlpacaBuySell().api_call()
+# list_orders = api.list_orders()
+# for idx, i in enumerate(list_orders):
+#     # print(i)
+#     if i.symbol == "OSTK":
+#         print(i.id)
+#         api.cancel_order(i.id)
+#         AlpacaBuySell("OSTK").liqidate_position_of_a_stock()
+# print(list_orders[1].symbol)
+# print(list_orders[1]['symbol'])
+# AlpacaBuySell("SRNE").liqidate_position_of_a_stock()
+# api.cancel_order('a65dfcd8-7419-4ff3-a433-7bc178b42dcc')
 # a = AlpacaBuySell("ROKU").short_sell()
 # print(a)
 # time.sleep(1)
