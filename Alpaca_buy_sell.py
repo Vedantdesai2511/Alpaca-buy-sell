@@ -298,7 +298,7 @@ class AlpacaBuySell:
 # api = AlpacaBuySell().api_call()
 # list_orders = api.list_orders()
 # print(list_orders)
-# AlpacaBuySell("OSTK").cancel_orders_and_liquidate_the_given_stock()
+AlpacaBuySell("ZM").cancel_orders_and_liquidate_the_given_stock()
 # print(list_orders[1].id[-1])
 # api = tradeapi.REST(
 #     base_url=config.Liquidate_all_the_positions_url,
