@@ -6,8 +6,8 @@ class AlpacaBuySell:
 
     def __init__(self, symbol=None, qty=10, order_type='market', time_in_force='gtc'):
         self.base_url = config.BASE_URL
-        self.api_key_id = 'PKFK5ZG1GL1U1Y66UHU1'  # put your api key of the account you want to trade on
-        self.api_secret = 'lG1oalOi1nEUFkTQNtU3QRkBm1bnDvABlRYhYZnm'  # put your secret key of the account you want
+        self.api_key_id = 'PKF1H75HNXPA52B5QJ7P'  # put your api key of the account you want to trade on
+        self.api_secret = 'EzWpH9P1YesvlZDa4mkxHzpIfD3WCSXk7TTEaRKp'  # put your secret key of the account you want
         # to trade on
         self.symbol = symbol  # Ticker symbol of the stock
         self.qty = qty  # number of shares
@@ -297,8 +297,42 @@ class AlpacaBuySell:
 
 # api = AlpacaBuySell().api_call()
 # list_orders = api.list_orders()
-# print(list_orders)
-AlpacaBuySell("ZM").cancel_orders_and_liquidate_the_given_stock()
+import time
+
+stock_name_list = ['NFLX', 'ROKU', 'BYND', 'SQ', 'PYPL', 'AAPL', 'NKTR', 'FB', 'MSFT', 'CCL', 'NCLH', 'SRNE',
+                   'ZM', 'AMC', 'OSTK', 'AMRN',
+                   'SNAP', 'GRUB', 'LYFT', 'OKTA', 'UBER', 'BIDU', 'AMD']
+
+
+api = AlpacaBuySell().api_call()
+# for stock_name in stock_name_list:
+#     order = AlpacaBuySell(stock_name).naked_buy_order()
+#     time.sleep(0.2)
+#     order_id = order.id
+#     print(f'order_id: {order_id}')
+#     buy_naked_order_filled_price = api.get_order(order_id).filled_avg_price
+#     print(f'buy_naked_order_filled_price: {buy_naked_order_filled_price}')
+#     buy_naked_order_filled_price = float(buy_naked_order_filled_price)
+#     limit_take_profit_price = buy_naked_order_filled_price + 5
+#     stop_loss = buy_naked_order_filled_price - 5
+#     try:
+#         AlpacaBuySell(stock_name).stop_limit_sell_order(limit_take_profit_price, stop_loss)
+#     except:
+#         pass
+#         print("No OCO order was created")
+#
+for stock_name in stock_name_list:
+    try:
+        AlpacaBuySell(stock_name).liqidate_position_of_a_stock()
+        print(f'Liquidated: {stock_name}')
+    except:
+        print(f'There was no oco for: {stock_name}')
+
+# for stock_name in stock_name_list:
+#     try:
+#         AlpacaBuySell(stock_name).cancel_orders_and_liquidate_the_given_stock()
+#     except:
+#         pass
 # print(list_orders[1].id[-1])
 # api = tradeapi.REST(
 #     base_url=config.Liquidate_all_the_positions_url,
