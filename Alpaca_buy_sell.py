@@ -308,6 +308,41 @@ class AlpacaBuySell:
 #     secret_key=config.SECRET_KEY
 # )
 
+######################################################################
+
+# import time
+
+# stock_name_list = ['NFLX', 'ROKU', 'BYND', 'SQ', 'PYPL', 'AAPL', 'NKTR', 'FB', 'MSFT', 'CCL', 'NCLH', 'SRNE',
+#                    'ZM', 'AMC', 'OSTK', 'AMRN',
+#                    'SNAP', 'GRUB', 'LYFT', 'OKTA', 'UBER', 'BIDU', 'AMD']
+
+
+# api = AlpacaBuySell().api_call()
+# for stock_name in stock_name_list:
+#     order = AlpacaBuySell(stock_name).naked_buy_order()
+#     time.sleep(0.2)
+#     order_id = order.id
+#     print(f'order_id: {order_id}')
+#     buy_naked_order_filled_price = api.get_order(order_id).filled_avg_price
+#     print(f'buy_naked_order_filled_price: {buy_naked_order_filled_price}')
+#     buy_naked_order_filled_price = float(buy_naked_order_filled_price)
+#     limit_take_profit_price = buy_naked_order_filled_price + 5
+#     stop_loss = buy_naked_order_filled_price - 5
+#     try:
+#         AlpacaBuySell(stock_name).stop_limit_sell_order(limit_take_profit_price, stop_loss)
+#     except:
+#         pass
+#         print("No OCO order was created")
+#
+# for stock_name in stock_name_list:
+#     try:
+#         AlpacaBuySell(stock_name).liqidate_position_of_a_stock()
+#         print(f'Liquidated: {stock_name}')
+#     except:
+#         print(f'There was no oco for: {stock_name}')
+
+
+
 # import requests
 
 # HEADERS = {
