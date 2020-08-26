@@ -7,3 +7,7 @@ robot can interact with markets efficiently"
 * ast
 
 # Hoe to use the code
+
+* Install all the requirements for the main code.
+* Populate the configuretion.py file with your personal keys
+* Call any method of your choice from the AlpacaBuySell class
