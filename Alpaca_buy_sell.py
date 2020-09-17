@@ -230,7 +230,7 @@ class AlpacaBuySell:
         """
             This function liquidates the naked position of the specified stock
         """
-        
+
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
@@ -250,6 +250,9 @@ class AlpacaBuySell:
                     AlpacaBuySell(pos[idx].symbol, qty=pos[idx].qty).market_sell()
 
     def cancel_orders_and_liquidate_the_given_stock(self):
+        """
+            This function liquidates EVERYTHING (i.e. ALL the orders) all the naked orders and all the oco orders too.
+        """
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
