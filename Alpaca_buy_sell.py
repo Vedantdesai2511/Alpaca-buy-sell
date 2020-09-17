@@ -227,6 +227,10 @@ class AlpacaBuySell:
                     print("ORDER FAILED: Your Order was Rejected!!!")
 
     def liqidate_position_of_a_stock(self):
+        """
+            This function liquidates the naked position of the specified stock
+        """
+        
         api = tradeapi.REST(
             base_url=self.base_url,
             key_id=self.api_key_id,
@@ -276,19 +280,14 @@ class AlpacaBuySell:
                     AlpacaBuySell(pos[idx].symbol, qty=self.qty).market_sell()
                 elif pos[idx].side == "short":
                     AlpacaBuySell(pos[idx].symbol, qty=self.qty).naked_buy_order()
-<<<<<<< HEAD
 
 
-# AlpacaBuySell("NFLX").cancel_orders_and_liquidate_the_given_stock()
-=======
->>>>>>> 0ff171e899f23274b4c7bf97e0c5d8800b3f300a
-
+AlpacaBuySell("ROKU").cancel_orders_and_liquidate_the_given_stock()
 
 # Below are the testing codes for diffrent scenarios
 
 # api = AlpacaBuySell().api_call()
 # list_orders = api.list_orders()
-<<<<<<< HEAD
 import time
 
 # stock_name_list = ['NFLX', 'ROKU', 'BYND', 'SQ', 'PYPL', 'AAPL', 'NKTR', 'FB', 'MSFT', 'CCL', 'NCLH', 'SRNE',
@@ -330,10 +329,10 @@ import time
 #         pass
 
 # AlpacaBuySell("NFLX").cancel_orders_and_liquidate_the_given_stock()
-=======
+# =======
 # print(list_orders)
 # AlpacaBuySell("ZM").cancel_orders_and_liquidate_the_given_stock()
->>>>>>> 0ff171e899f23274b4c7bf97e0c5d8800b3f300a
+# >>>>>>> 0ff171e899f23274b4c7bf97e0c5d8800b3f300a
 # print(list_orders[1].id[-1])
 # api = tradeapi.REST(
 #     base_url=config.Liquidate_all_the_positions_url,
