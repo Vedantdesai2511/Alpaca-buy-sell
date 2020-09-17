@@ -190,7 +190,7 @@ class AlpacaBuySell:
 
     def liqidate_positions(self):
         """
-            This function return all the open portions (not orders) in the given account
+            This function liquidates all the naked orders present in the current account (portfolio)
         """
 
         api = tradeapi.REST(
