@@ -6,7 +6,7 @@ robot can interact with markets efficiently"
 * json
 * ast
 
-# Hoe to use the code
+# How to use the code
 
 * Install all the requirements for the main code.
 * Populate the configuretion.py file with your personal keys
